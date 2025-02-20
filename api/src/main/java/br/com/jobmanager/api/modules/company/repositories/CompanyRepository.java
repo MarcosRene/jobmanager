@@ -9,4 +9,5 @@ import br.com.jobmanager.api.modules.company.entites.CompanyEntity;
 
 public interface CompanyRepository extends JpaRepository<CompanyEntity, UUID> {
   Optional<CompanyRepository> findByUsernameOrEmail(String username, String email);
+  Optional<CompanyEntity> findByUsername(String username);
 }
