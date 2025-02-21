@@ -14,10 +14,16 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @EnableMethodSecurity
 public class SecurityConfig {
   @Autowired
-  private SecurityFilter securityFilter;
+  private SecurityCompanyFilter securityCompanyFilter;
 
   @Autowired
   private SecurityCandidateFilter securityCandidateFilter;
+
+  private static final String[] SWAGGER_LIST = {
+    "/swagger-ui/**",
+    "/v3/api-docs/**",
+    "/swagger-resources",
+  };
 
   @Bean
   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -26,11 +32,12 @@ public class SecurityConfig {
         auth.requestMatchers("/api/v1/candidates/").permitAll()
             .requestMatchers("/api/v1/companies/").permitAll()
             .requestMatchers("/api/v1/companies/auth").permitAll()
-            .requestMatchers("/api/v1/candidates/auth").permitAll();
+            .requestMatchers("/api/v1/candidates/auth").permitAll().
+            requestMatchers(SWAGGER_LIST).permitAll();
         auth.anyRequest().authenticated();
       })
       .addFilterBefore(securityCandidateFilter, BasicAuthenticationFilter.class)
-      .addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
+      .addFilterBefore(securityCompanyFilter, BasicAuthenticationFilter.class);
     
       return http.build();
   }
