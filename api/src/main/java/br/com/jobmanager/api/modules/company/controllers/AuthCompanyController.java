@@ -14,12 +14,12 @@ import br.com.jobmanager.api.modules.company.dto.AuthCompanyDTO;
 import br.com.jobmanager.api.modules.company.useCases.AuthCompanyUseCase;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/v1/companies")
 public class AuthCompanyController {
   @Autowired
   private AuthCompanyUseCase authCompanyUseCase;
 
-  @PostMapping("/companies")
+  @PostMapping("/auth")
   public ResponseEntity<Object> auth(@RequestBody AuthCompanyDTO authCompanyDTO) throws AuthenticationException {
     try {
       var result = this.authCompanyUseCase.execute(authCompanyDTO);
