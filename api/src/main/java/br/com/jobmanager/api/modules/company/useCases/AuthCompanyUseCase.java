@@ -30,11 +30,9 @@ public class AuthCompanyUseCase {
   private PasswordEncoder passwordEncoder;
   
   public String execute(AuthCompanyDTO authCompanyDTO) throws AuthenticationException {
-    var company = this.companyRepository.findByUsername(authCompanyDTO.getUsername()).orElseThrow(
-      () -> { 
-        throw new UsernameNotFoundException("Campos [username/password] está incorreto");
-      } 
-    );
+    var company = this.companyRepository.findByUsername(authCompanyDTO.getUsername()).orElseThrow(() -> { 
+      throw new UsernameNotFoundException("Campos [username/password] está incorreto");
+    });
 
     var passwordMatches = this.passwordEncoder.matches(authCompanyDTO.getPassword(), company.getPassword());
     if (!passwordMatches) {
