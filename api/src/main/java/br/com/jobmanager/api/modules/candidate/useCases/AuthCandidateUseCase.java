@@ -17,7 +17,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 
 import br.com.jobmanager.api.modules.candidate.CandidateRepository;
 import br.com.jobmanager.api.modules.candidate.dto.AuthCandidateRequestDTO;
-import br.com.jobmanager.api.modules.candidate.dto.AuthCandidateResposeDTO;
+import br.com.jobmanager.api.modules.candidate.dto.AuthCandidateResponseDTO;
 
 @Service
 public class AuthCandidateUseCase {
@@ -30,7 +30,7 @@ public class AuthCandidateUseCase {
   @Autowired
   private PasswordEncoder passwordEncoder;
   
-  public AuthCandidateResposeDTO execute(AuthCandidateRequestDTO authCandidateRequestDTO) throws AuthenticationException {
+  public AuthCandidateResponseDTO execute(AuthCandidateRequestDTO authCandidateRequestDTO) throws AuthenticationException {
     var candidate = this.candidateRepository.findByUsername(authCandidateRequestDTO.username())
       .orElseThrow(() -> {
         throw new UsernameNotFoundException("O campo [username/password] está incorreto");  
@@ -49,7 +49,7 @@ public class AuthCandidateUseCase {
       .withSubject(candidate.getId().toString())
       .sign(algorithm);
 
-    var authCandidateResponse = AuthCandidateResposeDTO.builder()
+    var authCandidateResponse = AuthCandidateResponseDTO.builder()
       .access_token(token)
       .expires_in(expiresIn.toEpochMilli())
       .build();  

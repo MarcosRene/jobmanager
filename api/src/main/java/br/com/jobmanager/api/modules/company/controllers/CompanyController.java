@@ -7,8 +7,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.jobmanager.api.modules.candidate.CandidateEntity;
 import br.com.jobmanager.api.modules.company.entites.CompanyEntity;
 import br.com.jobmanager.api.modules.company.useCases.CreateCompanyUseCase;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
@@ -18,6 +25,14 @@ public class CompanyController {
   private CreateCompanyUseCase createCompanyUseCase;
 
   @PostMapping("/")
+  @Tag(name = "Empresa", description = "Informações da empresa")
+  @Operation(summary = "Cadastro de uma empresa", description = "Essa função é responsável cadastar uma empresa.")
+  @ApiResponses({
+    @ApiResponse(responseCode = "200", content = {
+      @Content(schema = @Schema(implementation = CompanyEntity.class))
+    }),
+    @ApiResponse(responseCode = "400", description = "Usuário já existe")
+  })
   public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity) {
     try {
       var result = this.createCompanyUseCase.execute(companyEntity);
