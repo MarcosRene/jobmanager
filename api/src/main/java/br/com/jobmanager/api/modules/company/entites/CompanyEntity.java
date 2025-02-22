@@ -15,10 +15,16 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity(name = "company")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CompanyEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
@@ -40,7 +46,7 @@ public class CompanyEntity {
   @Schema(example = "12345678", minLength = 8, maxLength = 100, requiredMode = RequiredMode.REQUIRED)  
   private String password;
   
-  @Schema(example = "https://www.jobmanager.com.br", requiredMode = RequiredMode.REQUIRED)
+  @Schema(example = "https://www.jobmanager.com.br")
   private String website;
 
   @Schema(example = "JobManager Company", requiredMode = RequiredMode.REQUIRED)

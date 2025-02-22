@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
-import br.com.jobmanager.api.modules.candidate.CandidateRepository;
 import br.com.jobmanager.api.modules.candidate.dto.AuthCandidateRequestDTO;
 import br.com.jobmanager.api.modules.candidate.dto.AuthCandidateResponseDTO;
+import br.com.jobmanager.api.modules.candidate.repositories.CandidateRepository;
 
 @Service
 public class AuthCandidateUseCase {

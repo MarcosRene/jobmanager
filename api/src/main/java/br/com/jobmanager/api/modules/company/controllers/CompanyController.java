@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.jobmanager.api.modules.candidate.CandidateEntity;
 import br.com.jobmanager.api.modules.company.entites.CompanyEntity;
 import br.com.jobmanager.api.modules.company.useCases.CreateCompanyUseCase;
 import io.swagger.v3.oas.annotations.Operation;

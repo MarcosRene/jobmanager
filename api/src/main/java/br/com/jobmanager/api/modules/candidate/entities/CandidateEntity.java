@@ -1,4 +1,4 @@
-package br.com.jobmanager.api.modules.candidate;
+package br.com.jobmanager.api.modules.candidate.entities;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
