@@ -1,7 +1,5 @@
 package br.com.jobmanager.api.modules.company.useCases;
 
-
-import java.sql.Array;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;

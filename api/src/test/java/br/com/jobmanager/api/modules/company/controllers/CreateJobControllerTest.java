@@ -1,14 +1,10 @@
 package br.com.jobmanager.api.modules.company.controllers;
 
-import java.util.Random;
 import java.util.UUID;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -22,7 +18,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import br.com.jobmanager.api.expections.CompanyNotFoundException;
 import br.com.jobmanager.api.modules.company.dto.CreateJobDTO;
 import br.com.jobmanager.api.modules.company.entites.CompanyEntity;
 import br.com.jobmanager.api.modules.company.repositories.CompanyRepository;
